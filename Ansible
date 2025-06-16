@@ -1,1 +1,104 @@
+📘 Ansible Notes
+Ansible is an open-source tool for IT automation—used for configuration management, app deployment, and task orchestration.
+
+⚙️ Overview
+Agentless: Uses SSH or WinRM (no need to install agents).
+
+Written in: Python
+
+Playbooks: Written in YAML
+
+Used for:
+
+Automating server setup
+
+Application deployment
+
+Configuration management
+
+📁 Core Components
+1. Inventory
+A list of target hosts:
+
+ini
+Copy
+Edit
+[web]
+192.168.1.10
+
+[db]
+dbserver.example.com
+2. Modules
+Pre-built commands to perform tasks (e.g., ping, copy, service):
+
+bash
+Copy
+Edit
+ansible all -m ping
+ansible web -m shell -a "uptime"
+3. Playbooks
+YAML files describing tasks:
+
+yaml
+Copy
+Edit
+- name: Install Apache
+  hosts: web
+  become: yes
+  tasks:
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+4. Roles
+Structured folder layout for reusable playbooks:
+
+Copy
+Edit
+roles/
+├── webserver/
+│   ├── tasks/
+│   ├── handlers/
+│   └── templates/
+5. Facts
+System information automatically collected via the setup module.
+
+🧰 Common Commands
+bash
+Copy
+Edit
+ansible-inventory --list           # List inventory
+ansible-playbook site.yml          # Run playbook
+ansible web -m ping                # Ping all web hosts
+ansible web -m apt -a "name=nginx state=latest"
+📦 Useful Modules
+Module	Purpose
+ping	Test connection
+copy	Copy files
+template	Deploy templated config files
+service	Start/stop services
+apt/yum	Package management
+user	Manage system users
+
+🔐 Privilege Escalation
+Use become: yes to run tasks with sudo:
+
+yaml
+Copy
+Edit
+- name: Update system
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update packages
+      apt:
+        update_cache: yes
+🧠 Best Practices
+Use roles for cleaner code organization
+
+Use Ansible Vault for sensitive data
+
+Prefer idempotent tasks (run safely multiple times)
+
+Use tags to run specific parts of playbooks
 
