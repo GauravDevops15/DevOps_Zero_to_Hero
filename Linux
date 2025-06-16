@@ -1,1 +1,135 @@
+🐧 Linux Notes
+A beginner-to-intermediate reference guide for working with the Linux command line, file system, permissions, and processes.
 
+📂 File System Hierarchy
+Directory	Purpose
+/	Root directory
+/home/	User home directories
+/etc/	System-wide configuration
+/var/	Variable files (logs, cache)
+/usr/	User utilities and applications
+/bin/	Essential user binaries
+/sbin/	System binaries
+/tmp/	Temporary files
+/dev/	Device files
+/proc/	Process and kernel info
+
+🖥️ Common Commands
+bash
+Copy
+Edit
+pwd         # Show current directory
+ls -l       # List files with details
+cd /path    # Change directory
+cp src dst  # Copy files/directories
+mv src dst  # Move/rename
+rm file     # Remove file
+mkdir name  # Create directory
+🔍 File Viewing & Searching
+bash
+Copy
+Edit
+cat file          # View file contents
+less file         # Scrollable view
+head -n 10 file   # First 10 lines
+tail -f file      # Live output of last lines
+grep "word" file  # Search in file
+find / -name "file.txt"  # Find file
+🛠️ File Permissions
+Symbolic Format: rwxr-xr--
+r = read, w = write, x = execute
+
+First block = owner, second = group, third = others
+
+Change Permissions
+bash
+Copy
+Edit
+chmod 755 script.sh        # rwxr-xr-x
+chmod +x file              # Add execute permission
+chown user:group file      # Change ownership
+📄 File Redirection
+bash
+Copy
+Edit
+command > file     # Redirect output (overwrite)
+command >> file    # Redirect output (append)
+command < input    # Redirect input
+command1 | command2  # Pipe output to another command
+⚙️ Process Management
+bash
+Copy
+Edit
+ps aux             # List all processes
+top                # Interactive process viewer
+kill PID           # Kill process by PID
+killall name       # Kill all processes by name
+&                  # Run in background
+jobs               # List background jobs
+fg %1              # Bring job to foreground
+📦 Package Management
+Ubuntu/Debian (APT)
+bash
+Copy
+Edit
+sudo apt update            # Refresh packages
+sudo apt install nginx     # Install a package
+sudo apt remove nginx      # Remove a package
+RedHat/CentOS (YUM/DNF)
+bash
+Copy
+Edit
+sudo yum install httpd     # Install Apache
+sudo dnf update            # Update all packages
+🧑‍💻 User Management
+bash
+Copy
+Edit
+adduser username           # Add user
+passwd username            # Set password
+usermod -aG group user     # Add user to group
+deluser username           # Delete user
+🌐 Networking
+bash
+Copy
+Edit
+ip a                      # Show IP addresses
+ping google.com           # Test connectivity
+netstat -tuln             # Show listening ports
+ss -tulwn                 # Faster netstat alternative
+curl ifconfig.me          # External IP
+🧠 System Info
+bash
+Copy
+Edit
+uname -a                 # Kernel and system info
+df -h                    # Disk space usage
+du -sh *                 # Folder sizes
+free -h                  # Memory usage
+uptime                   # System uptime
+whoami                   # Current user
+🔐 SSH & File Transfer
+bash
+Copy
+Edit
+ssh user@host                # Connect to remote server
+scp file user@host:/path     # Copy file to remote
+rsync -av file user@host:/   # Sync files remotely
+🧾 Crontab (Scheduled Tasks)
+bash
+Copy
+Edit
+crontab -e                    # Edit user crontab
+crontab -l                    # List crontab jobs
+Example:
+
+cron
+Copy
+Edit
+0 2 * * * /home/user/backup.sh  # Run daily at 2 AM
+📌 Tips
+Use man <command> to read the manual.
+
+history shows previous commands.
+
+Use alias ll='ls -lah' to make shortcuts.
