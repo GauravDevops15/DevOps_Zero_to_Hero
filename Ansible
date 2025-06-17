@@ -102,3 +102,83 @@ Prefer idempotent tasks (run safely multiple times)
 
 Use tags to run specific parts of playbooks
 
+Ansible Playbooks and Roles are key components of Ansible, an open-source automation tool used for configuration management, application deployment, and task automation.
+
+🔹 Ansible Playbooks
+A Playbook is a YAML file that defines one or more plays, which map groups of hosts to tasks. Each task calls an Ansible module with arguments.
+
+🔸 Basic Playbook Example
+yaml
+Copy
+Edit
+---
+- name: Install Apache on web servers
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+
+    - name: Ensure Apache is running
+      service:
+        name: apache2
+        state: started
+        enabled: true
+🧠 Key Concepts:
+hosts: Target group defined in your inventory.
+
+become: Run with sudo/admin privileges.
+
+tasks: List of actions to perform using modules like apt, service, etc.
+
+🔹 Ansible Roles
+Roles are a way to group and reuse tasks, variables, files, templates, and handlers in a structured format. They improve modularity and readability.
+
+🔸 Typical Role Structure
+perl
+Copy
+Edit
+my-role/
+├── defaults/
+│   └── main.yml            # Default variables
+├── files/
+│   └── myfile.txt          # Static files
+├── handlers/
+│   └── main.yml            # Handlers triggered by notify
+├── meta/
+│   └── main.yml            # Role dependencies
+├── tasks/
+│   └── main.yml            # Main list of tasks
+├── templates/
+│   └── myconfig.j2         # Jinja2 templates
+├── vars/
+│   └── main.yml            # Other variables
+🔸 Using a Role in a Playbook
+yaml
+Copy
+Edit
+---
+- name: Apply my-role to webservers
+  hosts: webservers
+  become: true
+
+  roles:
+    - my-role
+🔹 How to Create a Role
+You can create a role with:
+
+bash
+Copy
+Edit
+ansible-galaxy init my-role
+✅ When to Use Roles:
+When your playbooks are getting large or repetitive
+
+When you want to reuse configurations across projects
+
+When working in a team
+
