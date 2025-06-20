@@ -1,0 +1,98 @@
+🌍 Terraform Basics
+Terraform is an open-source IaC (Infrastructure as Code) tool created by HashiCorp.
+
+It uses a declarative language (HashiCorp Configuration Language, HCL) to define and provision infrastructure.
+
+📁 File Structure
+main.tf – Core infrastructure configuration.
+
+variables.tf – Variable definitions.
+
+outputs.tf – Output values after applying configuration.
+
+terraform.tfvars – Actual values for variables.
+
+🔧 Basic Commands
+Command	Description
+terraform init	Initializes the working directory
+terraform plan	Shows changes before applying
+terraform apply	Applies changes to infrastructure
+terraform destroy	Destroys managed infrastructure
+terraform validate	Validates the configuration files
+terraform fmt	Formats configuration files
+terraform output	Displays outputs from state
+
+🧱 HCL Syntax Overview
+hcl
+Copy
+Edit
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0abc1234"
+  instance_type = "t2.micro"
+}
+📦 Providers & Resources
+Providers: Interface to cloud platforms (AWS, Azure, GCP, etc.)
+
+Resources: Objects (EC2 instance, VPC, etc.) to manage with Terraform
+
+hcl
+Copy
+Edit
+provider "google" {
+  credentials = file("account.json")
+  project     = "my-project-id"
+  region      = "us-central1"
+}
+📥 Variables
+Declaring a variable:
+hcl
+Copy
+Edit
+variable "instance_type" {
+  type    = string
+  default = "t2.micro"
+}
+Using a variable:
+hcl
+Copy
+Edit
+instance_type = var.instance_type
+📤 Outputs
+hcl
+Copy
+Edit
+output "instance_ip" {
+  value = aws_instance.web.public_ip
+}
+🔐 State Management
+Terraform tracks infrastructure in a state file: terraform.tfstate
+
+Don't manually edit it
+
+Use remote state (e.g., S3 with DynamoDB locking) for team collaboration
+
+🧩 Modules
+Modules are reusable configurations
+
+hcl
+Copy
+Edit
+module "vpc" {
+  source = "./modules/vpc"
+  cidr_block = "10.0.0.0/16"
+}
+🚨 Best Practices
+Use version control (e.g., Git) for .tf files
+
+Use remote state backends for collaboration
+
+Lock provider versions
+
+Use workspaces for multiple environments (dev/staging/prod)
+
+Store secrets in a secure tool (e.g., Vault, AWS Secrets Manager)
+
