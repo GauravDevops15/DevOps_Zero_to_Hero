@@ -1,1 +1,60 @@
+🧰 Jenkins Notes
+📌 What is Jenkins?
+Jenkins is an open-source automation server used for:
 
+Continuous Integration (CI): Automatically building and testing code after every change.
+
+Continuous Delivery/Deployment (CD): Automatically deploying applications after successful builds/tests.
+
+🛠️ Key Concepts
+Term	Description
+Job/Project	A task like building/testing/deploying code.
+Build	An execution of a job.
+Node/Agent	A machine where Jenkins runs jobs.
+Master/Controller	Main Jenkins server that schedules jobs.
+Pipeline	Scripted steps defining CI/CD flow (via Jenkinsfile).
+SCM (Source Control Management)	Git, GitHub, GitLab, Bitbucket, etc.
+Plugins	Extend Jenkins with features (e.g., Docker, GitHub integration).
+
+🔧 Installing Jenkins
+Manual (WAR): Download .war from jenkins.io and run:
+
+nginx
+Copy
+Edit
+java -jar jenkins.war
+Package Manager: apt (Debian/Ubuntu) or yum (RHEL/CentOS)
+
+Docker:
+
+bash
+Copy
+Edit
+docker run -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts
+🧩 Must-Have Plugins
+Git
+
+GitHub
+
+Pipeline
+
+Blue Ocean (UI for pipelines)
+
+Credentials Binding
+
+Docker / Docker Pipeline
+
+Email Extension
+
+🧪 Job Types
+Freestyle Project
+
+UI-based configuration
+
+Good for simple tasks
+
+Pipeline
+
+Script-based (Jenkinsfile)
+
+Ideal for version-controlled, complex CI/CD
