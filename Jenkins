@@ -1,9 +1,7 @@
 🧰 Jenkins Notes
 📌 What is Jenkins?
 Jenkins is an open-source automation server used for:
-
 Continuous Integration (CI): Automatically building and testing code after every change.
-
 Continuous Delivery/Deployment (CD): Automatically deploying applications after successful builds/tests.
 
 🛠️ Key Concepts
@@ -18,7 +16,6 @@ Plugins	Extend Jenkins with features (e.g., Docker, GitHub integration).
 
 🔧 Installing Jenkins
 Manual (WAR): Download .war from jenkins.io and run:
-
 nginx
 Copy
 Edit
