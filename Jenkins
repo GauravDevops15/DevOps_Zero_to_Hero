@@ -87,7 +87,12 @@ pipeline {
 
 🔐 Credentials Management
 Go to Manage Jenkins → Credentials
-
 Add secrets (e.g., GitHub tokens, SSH keys, passwords)
-
 Use with withCredentials {} block in pipelines
+
+
+🛎️ Triggers
+Poll SCM: Jenkins checks repo for changes
+Webhook: GitHub notifies Jenkins (preferred)
+Build periodically: Cron-style schedule
+Manual: Start job on demand
