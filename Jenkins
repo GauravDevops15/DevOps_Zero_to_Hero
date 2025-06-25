@@ -83,3 +83,11 @@ pipeline {
         }
     }
 }
+
+
+🔐 Credentials Management
+Go to Manage Jenkins → Credentials
+
+Add secrets (e.g., GitHub tokens, SSH keys, passwords)
+
+Use with withCredentials {} block in pipelines
