@@ -96,3 +96,10 @@ Poll SCM: Jenkins checks repo for changes
 Webhook: GitHub notifies Jenkins (preferred)
 Build periodically: Cron-style schedule
 Manual: Start job on demand
+
+💡 Tips
+Use parameterized builds for flexibility
+Archive artifacts (archiveArtifacts) to store build outputs
+Use post blocks for cleanup or notifications
+Keep Jenkins updated and back it up regularly
+Split jobs into stages for clarity and parallelism
