@@ -48,13 +48,38 @@ Email Extension
 
 🧪 Job Types
 Freestyle Project
-
 UI-based configuration
-
 Good for simple tasks
-
 Pipeline
-
 Script-based (Jenkinsfile)
-
 Ideal for version-controlled, complex CI/CD
+
+🧾 Sample Jenkinsfile
+groovy
+Copy
+Edit
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/user/repo.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'make build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'make test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh './deploy.sh'
+            }
+        }
+    }
+}
